@@ -1,0 +1,7 @@
+version : "3.7"
+services:
+  ewallet:
+    container_name: ewallet_containerTest
+    image: enigma/ewallet
+    ports:
+      - 33331:32321
