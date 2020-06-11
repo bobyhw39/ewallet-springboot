@@ -13,7 +13,10 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TransactionPostPointToBalanceDTO {
+
     @NotEmpty(message = "Account may not be empty")
     @Size(min = 6, max = 6, message = "Account must be 6 length")
     private String account;
+
+    private String password;
 }

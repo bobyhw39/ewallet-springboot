@@ -1,12 +1,10 @@
 package com.enigma.seventhmarch.services;
 
 import com.enigma.seventhmarch.controller.AccountController;
-import com.enigma.seventhmarch.dto.AccountGetDTO;
-import com.enigma.seventhmarch.dto.AccountPostDTO;
-import com.enigma.seventhmarch.dto.AccountPutBalanceDTO;
-import com.enigma.seventhmarch.dto.AccountPutStatus;
+import com.enigma.seventhmarch.dto.*;
 import com.enigma.seventhmarch.entity.Account;
 import com.enigma.seventhmarch.exceptions.BadRequestException;
+import com.enigma.seventhmarch.exceptions.ErrorDetails;
 import com.enigma.seventhmarch.exceptions.NotFoundException;
 import com.enigma.seventhmarch.repository.AccountRepository;
 import com.google.common.annotations.GwtCompatible;
@@ -21,6 +19,7 @@ import org.springframework.stereotype.Service;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -53,6 +52,18 @@ public class AccountServices {
         return accountGetDTO;
     }
 
+    public ErrorDetails loginAccount(AccountPostLogin accountPostLogin){
+        logger.info("get account of " + accountPostLogin.getAccount());
+        Account account = accountRepository.findByAccount(accountPostLogin.getAccount());
+        if (account == null) {
+            throw new NotFoundException("Account Number : " + accountPostLogin.getAccount() + " Not Found");
+        }
+        if(!account.getPassword().equals(accountPostLogin.getPassword())){
+            throw new NotFoundException("Password : " + accountPostLogin.getAccount() + "incorrect");
+        }
+        return new ErrorDetails(new Date(System.currentTimeMillis()), "login" + accountPostLogin.getAccount() +" success", "200", "/account/login");
+    }
+
     public List<AccountGetDTO> getAccountByName(String name) {
         logger.info("search account with name " + name);
         List<AccountGetDTO> accountGetDTOList = Lists.newArrayList();
@@ -78,7 +89,7 @@ public class AccountServices {
         if (checkAccount != null) {
             throw new BadRequestException("Account Number : " + postDTO.getAccount() + " Found Cannot Create Account");
         }
-        Account account = new Account(null, postDTO.getAccount(), postDTO.getName(), postDTO.getBalance(), new BigDecimal(10000), 0);
+        Account account = new Account(null, postDTO.getAccount(), postDTO.getPassword(), postDTO.getName(), postDTO.getBalance(), new BigDecimal(10000), 0);
         accountRepository.save(account);
         return account;
     }
@@ -89,7 +100,7 @@ public class AccountServices {
             throw new NotFoundException("Account Number : " + putBalanceDTO.getAccount() + " Not Found");
         }
         checkStatus(account.getStatus());
-        Account account1 = new Account(account.getId(), putBalanceDTO.getAccount(), account.getName(), (account.getBalance().add(putBalanceDTO.getBalance())), account.getPoint(), account.getStatus());
+        Account account1 = new Account(account.getId(), putBalanceDTO.getAccount(),account.getPassword(), account.getName(), (account.getBalance().add(putBalanceDTO.getBalance())), account.getPoint(), account.getStatus());
         accountRepository.save(account1);
         ModelMapper modelMapper = new ModelMapper();
         AccountGetDTO accountGetDTO = modelMapper.map(account, AccountGetDTO.class);
@@ -99,7 +110,7 @@ public class AccountServices {
 
     public AccountGetDTO updateStatus(AccountPutStatus accountPutStatus) {
         Account account = accountRepository.findByAccount(accountPutStatus.getAccount());
-        Account account1 = new Account(account.getId(), accountPutStatus.getAccount(), account.getName(), account.getBalance(), account.getPoint(), accountPutStatus.getStatus());
+        Account account1 = new Account(account.getId(), accountPutStatus.getAccount(),account.getPassword(), account.getName(), account.getBalance(), account.getPoint(), accountPutStatus.getStatus());
         checkStatus(account.getStatus());
         accountRepository.save(account1);
         ModelMapper modelMapper = new ModelMapper();

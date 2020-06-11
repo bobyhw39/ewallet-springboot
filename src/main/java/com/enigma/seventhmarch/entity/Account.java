@@ -28,6 +28,9 @@ public class Account {
     @Column(name = "account", length = 6, nullable = false)
     private String account;
 
+    @Column(name = "password", nullable = false)
+    private String password;
+
     @Column(name = "name", nullable = false)
     private String name;
 

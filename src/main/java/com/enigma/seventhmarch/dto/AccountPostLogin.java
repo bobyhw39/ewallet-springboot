@@ -5,14 +5,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigDecimal;
-
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class TransactionPostBalanceDTO {
+public class AccountPostLogin {
     private String account;
     private String password;
-    private BigDecimal balance;
 }

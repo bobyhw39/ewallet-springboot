@@ -84,7 +84,7 @@ public class TransactionServices {
         if (account == null) {
             throw new NotFoundException("Account Number : " + postBalanceDTO.getAccount() + " Not Found");
         }
-        Account account1 = new Account(account.getId(), postBalanceDTO.getAccount(), account.getName(), (account.getBalance().add(postBalanceDTO.getBalance())), account.getPoint(), account.getStatus());
+        Account account1 = new Account(account.getId(), postBalanceDTO.getAccount(),postBalanceDTO.getPassword(), account.getName(), (account.getBalance().add(postBalanceDTO.getBalance())), account.getPoint(), account.getStatus());
         Transaction transaction = new Transaction(null, dateNow, "balance", account.getAccount(), null, postBalanceDTO.getBalance(), "add balance");
         accountRepository.save(account1);
         transactionRepository.save(transaction);
@@ -99,7 +99,7 @@ public class TransactionServices {
         checkBalance(account, transactionPostPulsaDTO.getAmount());
         Double point = getPoint(transactionPostPulsaDTO.getAmount());
         Transaction transaction = new Transaction(null, dateNow, "pulsa", account.getAccount(), null, transactionPostPulsaDTO.getAmount(), "Pembelian pulsa ke" + transactionPostPulsaDTO.getPhonenumber());
-        Account accountCommit = new Account(account.getId(), transactionPostPulsaDTO.getAccount(), account.getName(), account.getBalance().subtract(transactionPostPulsaDTO.getAmount()), account.getPoint().add(new BigDecimal(point)), account.getStatus());
+        Account accountCommit = new Account(account.getId(), transactionPostPulsaDTO.getAccount(),transactionPostPulsaDTO.getPassword(), account.getName(), account.getBalance().subtract(transactionPostPulsaDTO.getAmount()), account.getPoint().add(new BigDecimal(point)), account.getStatus());
         transactionRepository.save(transaction);
         accountRepository.save(accountCommit);
         logger.info("post transaction pulsa from" + account + " to " + transactionPostPulsaDTO.getPhonenumber());
@@ -110,7 +110,7 @@ public class TransactionServices {
         AccountGetDTO account = accountServices.getAccount(transactionPostPointToBalanceDTO.getAccount());
         checkPoint(account);
         Transaction transaction = new Transaction(null, dateNow, "point", account.getAccount(), account.getAccount(), account.getPoint(), "point to balance");
-        Account accountCommit = new Account(account.getId(), transactionPostPointToBalanceDTO.getAccount(), account.getName(), account.getBalance().add(account.getPoint()), account.getPoint().subtract(account.getPoint()), account.getStatus());
+        Account accountCommit = new Account(account.getId(), transactionPostPointToBalanceDTO.getAccount(),transactionPostPointToBalanceDTO.getPassword(), account.getName(), account.getBalance().add(account.getPoint()), account.getPoint().subtract(account.getPoint()), account.getStatus());
         transactionRepository.save(transaction);
         accountRepository.save(accountCommit);
         logger.info("post transaction point to balance");
@@ -122,8 +122,8 @@ public class TransactionServices {
         checkBalance(account, transactionPostTransferDTO.getAmount());
         Account accountTo = accountRepository.findByAccount(transactionPostTransferDTO.getTo());
         Transaction transaction = new Transaction(null, dateNow, "transfer", transactionPostTransferDTO.getAccount(), transactionPostTransferDTO.getTo(), transactionPostTransferDTO.getAmount(), transactionPostTransferDTO.getDescription());
-        Account accountCommit = new Account(account.getId(), transactionPostTransferDTO.getAccount(), account.getName(), account.getBalance().subtract(transactionPostTransferDTO.getAmount()), account.getPoint(), account.getStatus());
-        Account accountToCommit = new Account(accountTo.getId(), transactionPostTransferDTO.getTo(), accountTo.getName(), accountTo.getBalance().add(transactionPostTransferDTO.getAmount()), accountTo.getPoint(), accountTo.getStatus());
+        Account accountCommit = new Account(account.getId(), transactionPostTransferDTO.getAccount(),transactionPostTransferDTO.getPassword(), account.getName(), account.getBalance().subtract(transactionPostTransferDTO.getAmount()), account.getPoint(), account.getStatus());
+        Account accountToCommit = new Account(accountTo.getId(), transactionPostTransferDTO.getTo(),accountTo.getPassword(), accountTo.getName(), accountTo.getBalance().add(transactionPostTransferDTO.getAmount()), accountTo.getPoint(), accountTo.getStatus());
         transactionRepository.save(transaction);
         accountRepository.save(accountCommit);
         accountRepository.save(accountToCommit);

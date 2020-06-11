@@ -24,6 +24,9 @@ public class TransactionPostTransferDTO {
     @Size(min = 6, max = 6, message = "Account must be 6 length")
     private String to;
 
+    @NotEmpty(message = "Password may not be empty")
+    private String password;
+
     @NotNull(message = "Ammount may not be empty")
     private BigDecimal amount;
 

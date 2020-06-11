@@ -1,0 +1,4 @@
+2020-04-20 09:10:59,709 INFO org.springframework.boot.StartupInfoLogger [main] Starting SeventhmarchApplication on DESKTOP-GONUBG8 with PID 18972 (C:\Users\User\Exercism\java\seventhmarch\target\classes started by User in C:\Users\User\Exercism\java\seventhmarch)
+2020-04-20 09:10:59,719 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2020-04-20 09:11:02,387 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-04-20 09:11:02,654 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 239ms. Found 2 JPA repository interfaces.

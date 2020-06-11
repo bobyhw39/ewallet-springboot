@@ -18,6 +18,7 @@ public class TransactionGetDTO {
     private String type;
     private String from;
     private String to;
+    private String password;
     private BigDecimal amount;
     private String description;
 }

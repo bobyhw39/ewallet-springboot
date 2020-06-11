@@ -1,0 +1,39 @@
+2020-05-29 15:18:15,379 INFO org.springframework.boot.StartupInfoLogger [main] Starting SeventhmarchApplication on Bobys-MacBook-Pro.local with PID 79381 (/Volumes/Data/JavaProjects/seventhmarch/target/classes started by bobyhw39 in /Volumes/Data/JavaProjects/seventhmarch)
+2020-05-29 15:18:15,385 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2020-05-29 15:18:18,976 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-05-29 15:18:19,394 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 318ms. Found 2 JPA repository interfaces.
+2020-05-29 15:18:21,741 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 32321 (http)
+2020-05-29 15:18:21,758 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-32321"]
+2020-05-29 15:18:21,759 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2020-05-29 15:18:21,760 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-05-29 15:18:21,917 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2020-05-29 15:18:21,918 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 6329 ms
+2020-05-29 15:18:22,197 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-05-29 15:18:22,512 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.4.12.Final
+2020-05-29 15:18:22,789 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-05-29 15:18:22,974 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2020-05-29 15:18:24,279 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2020-05-29 15:18:24,301 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2020-05-29 15:18:25,700 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-05-29 15:18:25,711 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-05-29 15:18:26,530 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-05-29 15:18:26,696 INFO springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping [main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-05-29 15:18:26,890 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-29 15:18:27,089 INFO springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] Context refreshed
+2020-05-29 15:18:27,109 INFO springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] Found 1 custom documentation plugin(s)
+2020-05-29 15:18:27,145 INFO springfox.documentation.spring.web.scanners.ApiListingReferenceScanner [main] Scanning for api listing references
+2020-05-29 15:18:27,439 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-32321"]
+2020-05-29 15:18:27,491 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 32321 (http) with context path ''
+2020-05-29 15:18:27,495 INFO org.springframework.boot.StartupInfoLogger [main] Started SeventhmarchApplication in 13.269 seconds (JVM running for 15.478)
+2020-05-29 15:18:47,870 INFO org.apache.juli.logging.DirectJDKLog [http-nio-32321-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-05-29 15:18:47,872 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-32321-exec-1] Initializing Servlet 'dispatcherServlet'
+2020-05-29 15:18:47,891 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-32321-exec-1] Completed initialization in 19 ms
+2020-05-29 15:18:48,319 INFO com.enigma.seventhmarch.services.AccountServices [http-nio-32321-exec-1] get account of 123456
+2020-05-29 15:18:56,918 INFO com.enigma.seventhmarch.services.AccountServices [http-nio-32321-exec-3] get account of 1234562
+2020-05-29 15:18:59,857 INFO com.enigma.seventhmarch.services.AccountServices [http-nio-32321-exec-5] get account of 123456
+2020-05-29 15:46:02,943 INFO com.enigma.seventhmarch.services.AccountServices [http-nio-32321-exec-2] get account of 123456
+2020-05-29 16:08:44,735 INFO com.enigma.seventhmarch.services.AccountServices [http-nio-32321-exec-1] get account of 123456
+2020-05-29 23:46:11,572 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'
+2020-05-29 23:46:11,584 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringContextShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-05-29 23:46:11,648 INFO com.zaxxer.hikari.HikariDataSource [SpringContextShutdownHook] HikariPool-1 - Shutdown initiated...
+2020-05-29 23:46:11,667 INFO com.zaxxer.hikari.HikariDataSource [SpringContextShutdownHook] HikariPool-1 - Shutdown completed.

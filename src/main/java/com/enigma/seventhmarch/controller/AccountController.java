@@ -1,12 +1,10 @@
 package com.enigma.seventhmarch.controller;
 
-import com.enigma.seventhmarch.dto.AccountGetDTO;
-import com.enigma.seventhmarch.dto.AccountPutBalanceDTO;
-import com.enigma.seventhmarch.dto.AccountPutStatus;
+import com.enigma.seventhmarch.dto.*;
 import com.enigma.seventhmarch.entity.Account;
-import com.enigma.seventhmarch.dto.AccountPostDTO;
 
 //import com.enigma.seventhmarch.exceptions.AccountExceptions;
+import com.enigma.seventhmarch.exceptions.ErrorDetails;
 import com.enigma.seventhmarch.repository.AccountRepository;
 import com.enigma.seventhmarch.services.AccountServices;
 import io.swagger.annotations.Api;
@@ -37,9 +35,7 @@ public class AccountController {
     @GetMapping("/{accNum}")
     @ApiOperation(value = "View a info account", response = AccountGetDTO.class)
     public AccountGetDTO getAccount(@Valid @PathVariable String accNum) {
-
         return accountServices.getAccount(accNum);
-
     }
 
     @GetMapping("/search")
@@ -66,5 +62,10 @@ public class AccountController {
         return accountServices.updateStatus(updateStatus);
     }
 
+    @PostMapping("/login")
+    @ApiOperation(value = "Login Account", response = AccountPostLogin.class)
+    public ErrorDetails loginAccount(@RequestBody AccountPostLogin accountPostLogin){
+        return accountServices.loginAccount(accountPostLogin);
+    }
 
 }

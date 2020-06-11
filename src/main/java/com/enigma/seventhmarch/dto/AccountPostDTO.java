@@ -22,6 +22,10 @@ public class AccountPostDTO {
     @Size(min = 6, max = 6, message = "Account must be 6 length")
     private String account;
 
+    @NotEmpty(message = "Password may not be empty")
+    @Size(min = 8, max = 255, message = "Passowrd must be 8 length")
+    private String password;
+
     @Valid
     @NotNull(message = "Name can not be null")
     @Size(min = 5, message = "Name minimum 5 character")
